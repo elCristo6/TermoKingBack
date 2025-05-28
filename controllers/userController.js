@@ -133,7 +133,13 @@ class UserController {
         { expiresIn: '1h' } // Token válido por 1 hora
       );
 
-      res.json({ message: 'Inicio de sesión exitoso', token });
+      res.json({ 
+      message: 'Inicio de sesión exitoso', 
+      token ,
+      userType: user.userType,
+      // si quieres enviar más datos, puedes añadirlos:
+      userId: user.userId,
+      name: user.name});
     } catch (error) {
       console.error('Error en el inicio de sesión:', error);
       res.status(500).json({ error: 'Error interno del servidor' });
